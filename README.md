@@ -1,6 +1,7 @@
 # Site Frezz AI (accueil + confidentialité + conditions)
 
-Site statique, sans build : `index.html`, `confidentialite.html`, `conditions.html`, `style.css`, `logo.png`.
+Site statique, sans build : `index.html`, `confidentialite.html`, `conditions.html`, `style.css`, `script.js`, `logo.png`.
+Design : structure Cal AI (téléphones + étiquettes flottantes, arguments, FAQ) × ambiance x.ai (fond nuit, titre animé, grille de cartes, chiffres), aux couleurs de l’app (encre, crème, ocre, Jost + Fraunces).
 Il sert à la **vérification de marque Google** (pour afficher « Frezz AI » au lieu de `zfzxqczbxunhggvowwlb.supabase.co` sur la page de connexion Google). Il sera aussi réutilisé pour l'App Store et le Play Store, qui demandent une politique de confidentialité en ligne.
 
 ## À compléter avant publication

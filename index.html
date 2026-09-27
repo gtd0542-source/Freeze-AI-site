@@ -3,70 +3,293 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Frezz AI — Ton frigo, ton dîner, décidé</title>
-  <meta name="description" content="Frezz AI transforme une photo de ton frigo en une seule idée de dîner, puis te guide pas à pas pour la cuisiner.">
+  <title>Frezz AI — Ton frigo en photo, ton dîner décidé</title>
+  <meta name="description" content="Prends ton frigo en photo : Frezz AI te donne une seule idée de dîner, faite avec ce que tu as, puis te guide pas à pas.">
+  <meta name="theme-color" content="#0B0F14">
+  <meta property="og:title" content="Frezz AI — Ton dîner, décidé.">
+  <meta property="og:description" content="Une photo de ton frigo, une seule décision, un mode cuisine pas à pas.">
+  <meta property="og:image" content="logo.png">
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@1,400&family=Jost:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="wrap nav">
-    <a class="brand" href="./"><span class="mark"></span>Frezz <em>AI</em></a>
-    <nav class="nav-links">
-      <a href="confidentialite.html">Confidentialité</a>
-      <a href="conditions.html">Conditions</a>
-    </nav>
+  <header class="nav" id="nav">
+    <div class="wrap">
+      <a class="brand" href="./"><span class="mark"></span>Frezz <span class="serif">AI</span></a>
+      <nav class="nav-links">
+        <a href="#comment">Comment ça marche</a>
+        <a href="#pourquoi">Pourquoi Frezz</a>
+        <a href="#faq">FAQ</a>
+        <a class="btn btn-light btn-sm" href="#lancement">Être prévenu</a>
+      </nav>
+    </div>
   </header>
 
-  <main class="wrap">
+  <main>
+    <!-- HERO -->
     <section class="hero">
-      <span class="eyebrow">Application mobile · iPhone et Android</span>
-      <h1>Ce soir, on mange <em>quoi&nbsp;?</em></h1>
-      <p class="lead">Prends ton frigo en photo. Frezz AI te donne une seule idée de dîner, faite avec ce que tu as, puis te guide pas à pas.</p>
-      <a class="cta" href="#comment">Découvrir comment ça marche</a>
-      <span class="cta-note">Bientôt sur l’App Store et Google Play.</span>
+      <div class="wrap">
+        <a class="pill" href="#comment"><b>Nouveau</b>Une décision en moins de 10 s <span>→</span></a>
+        <h1>
+          <span class="line">Ton frigo en photo.</span>
+          <span class="line">Ton dîner, <span class="cycle" id="cycle" aria-label="décidé.">décidé.</span></span>
+        </h1>
+        <p class="lead">Pas une liste de recettes. <strong>Une seule idée de dîner</strong>, faite avec ce que tu as, puis un mode cuisine qui te guide pas à pas.</p>
+        <div class="hero-cta">
+          <a class="btn btn-light" href="#lancement">Être prévenu du lancement <span class="arrow">→</span></a>
+          <a class="btn btn-ghost" href="#comment">Voir comment ça marche</a>
+        </div>
+        <div class="stores"><span>Bientôt sur l’App Store</span><i></i><span>et Google Play</span></div>
+
+        <div class="stage">
+          <!-- Téléphone 1 : le scanner -->
+          <div class="device back">
+            <div class="phone">
+              <div class="screen">
+                <div class="fridge">
+                  <div class="light-glow"></div>
+                  <div class="shelf" style="top:34%"></div>
+                  <div class="shelf" style="top:56%"></div>
+                  <div class="shelf" style="top:78%"></div>
+                  <span class="food" style="left:12%;top:25%">🥚</span>
+                  <span class="food" style="left:40%;top:24.5%">🧀</span>
+                  <span class="food" style="left:68%;top:22%">🥛</span>
+                  <span class="food" style="left:10%;top:47%">🍅</span>
+                  <span class="food" style="left:39%;top:46%">🥬</span>
+                  <span class="food" style="left:67%;top:46.5%">🥕</span>
+                  <span class="food" style="left:12%;top:69%">🧈</span>
+                  <span class="food" style="left:40%;top:68.5%">🍗</span>
+                  <span class="food" style="left:68%;top:69%">🍋</span>
+                </div>
+                <div class="cam-shade"></div>
+                <div class="status light"><span>19:42</span><span>●●● ▮</span></div>
+                <div class="island"></div>
+                <div class="cam-top"><span class="cam-btn">✕</span><span class="cam-title">Ton frigo</span><span class="cam-btn">⚡</span></div>
+                <span class="frame-corner tl"></span><span class="frame-corner tr"></span>
+                <span class="frame-corner bl"></span><span class="frame-corner br"></span>
+                <div class="scanline"></div>
+                <div class="shutter-row"><span class="cam-btn">🖼</span><span class="shutter"></span><span class="cam-btn">↻</span></div>
+              </div>
+            </div>
+            <div class="tag m-left" style="left:-6em;top:15em"><span class="e">🥚</span><span class="t"><b>Œufs</b><small>6 pièces</small></span></div>
+            <div class="tag m-hide" style="right:-6.5em;top:27em;animation-delay:-1.6s"><span class="e">🥬</span><span class="t"><b>Épinards</b><small>1 sachet</small></span></div>
+            <div class="tag m-hide" style="left:-7em;top:39em;animation-delay:-3.1s"><span class="e">🧀</span><span class="t"><b>Comté</b><small>150 g</small></span></div>
+          </div>
+
+          <svg class="doodle" viewBox="0 0 150 90" fill="none" aria-hidden="true">
+            <path d="M6 64c18-30 44-44 62-30 12 10 2 26-10 20-12-6-2-30 22-38 20-7 42-2 60 12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+            <path d="M128 18l14 12-18 4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+
+          <!-- Téléphone 2 : la décision (identique à l'app) -->
+          <div class="device front">
+            <div class="phone">
+              <div class="screen">
+                <div class="status"><span>19:42</span><span>●●● ▮</span></div>
+                <div class="island"></div>
+                <div class="dec-hero">
+                  <div class="dec-top"><span class="round">←</span><span class="dec-tag">Mon choix pour ce soir</span><span class="round">♡</span></div>
+                  <div class="orbit" style="left:2.2em;top:12em">🥚 Œufs</div>
+                  <div class="orbit" style="right:2em;top:14.4em">🥬 Épinards</div>
+                  <div class="orbit" style="left:3.4em;top:18.8em">🧀 Comté</div>
+                  <div class="plate"><span>🍳</span></div>
+                </div>
+                <div class="dec-body">
+                  <p class="dec-title">Omelette épinards et comté</p>
+                  <div class="tiles">
+                    <div class="tile"><span class="e">⏱️</span><b>15 min</b><small>en tout</small></div>
+                    <div class="tile"><span class="e">⚡</span><b>Facile</b><small>effort</small></div>
+                    <div class="tile good"><span class="e">🛒</span><b>0</b><small>achat</small></div>
+                  </div>
+                  <div class="reason"><small>Pourquoi ce choix</small><p>Tes épinards sont à finir, et tout le reste est déjà dans ton frigo.</p></div>
+                </div>
+                <div class="dec-actions"><span class="alt">Autre idée</span><span class="go">Cuisiner →</span></div>
+              </div>
+            </div>
+            <div class="tag ok m-right" style="right:-6em;top:9em;animation-delay:-2.2s"><span class="e">✅</span><span class="t"><b>0 course</b><small>tout est chez toi</small></span></div>
+            <div class="tag m-hide" style="left:-6.5em;top:47em;animation-delay:-0.8s"><span class="e">🌙</span><span class="t"><b>Prêt à 20 h</b><small>sans réfléchir</small></span></div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="steps" id="comment">
-      <div class="card">
-        <div class="num">1</div>
-        <h3>Une photo</h3>
-        <p>Ouvre ton frigo et prends une photo. L’app repère tes aliments en quelques secondes.</p>
+    <!-- CHIFFRES -->
+    <div class="wrap">
+      <div class="stats reveal">
+        <div class="stat"><b>1</b><span>photo de ton frigo</span></div>
+        <div class="stat"><b>1</b><span>seule décision, pas 50 recettes</span></div>
+        <div class="stat"><b>&lt;10<em>s</em></b><span>pour savoir quoi cuisiner</span></div>
+        <div class="stat"><b>0</b><span>photo conservée</span></div>
       </div>
-      <div class="card">
-        <div class="num">2</div>
-        <h3>Une décision</h3>
-        <p>Pas une liste de recettes : un dîner, adapté à ton foyer, à ton temps et à tes restrictions.</p>
-      </div>
-      <div class="card">
-        <div class="num">3</div>
-        <h3>On cuisine</h3>
-        <p>Un mode cuisine étape par étape, minuteurs compris, écran toujours allumé.</p>
+    </div>
+
+    <!-- COMMENT ÇA MARCHE (bento x.ai) -->
+    <section class="block" id="comment">
+      <div class="wrap">
+        <div class="head-row reveal">
+          <div>
+            <span class="kicker">Comment ça marche</span>
+            <h2>Du frigo à l’assiette,<br><span class="serif">sans réfléchir.</span></h2>
+          </div>
+          <p class="section-lead">Frezz AI s’occupe de la partie fatigante : savoir quoi faire avec ce qu’il reste. Toi, tu cuisines.</p>
+        </div>
+
+        <div class="bento">
+          <article class="card reveal">
+            <div class="viz">
+              <div class="chips">
+                <span class="chip lit" style="transition-delay:.05s">🥚 Œufs · 6</span>
+                <span class="chip" style="transition-delay:.15s">🥬 Épinards</span>
+                <span class="chip" style="transition-delay:.25s">🧀 Comté</span>
+                <span class="chip" style="transition-delay:.35s">🍅 Tomates · 3</span>
+                <span class="chip" style="transition-delay:.45s">🥕 Carottes</span>
+                <span class="chip" style="transition-delay:.55s">🧈 Beurre</span>
+                <span class="chip" style="transition-delay:.65s">🍋 Citron</span>
+              </div>
+            </div>
+            <div class="cap"><div><h3>Scanne</h3><p>Une photo suffit. L’app repère tes aliments en quelques secondes.</p></div><span class="num">01</span></div>
+          </article>
+
+          <article class="card reveal">
+            <div class="viz">
+              <div class="mini-card">
+                <div class="tag-top">Mon choix pour ce soir</div>
+                <div class="row"><span class="dish">🍳</span><div><h4>Omelette épinards et comté</h4><small>15 min · facile · 0 achat</small></div></div>
+                <div class="go">Cuisiner →</div>
+              </div>
+            </div>
+            <div class="cap"><div><h3>Décide</h3><p>Une seule proposition, adaptée à ton foyer et à ton temps.</p></div><span class="num">02</span></div>
+          </article>
+
+          <article class="card reveal full-sm">
+            <div class="viz">
+              <div class="chips">
+                <span class="chip ok" style="transition-delay:.05s">✓ Sans lactose</span>
+                <span class="chip ok" style="transition-delay:.15s">✓ Végétarien</span>
+                <span class="chip no" style="transition-delay:.3s">🥛 Crème fraîche</span>
+                <span class="chip ok" style="transition-delay:.45s">✓ Sans arachides</span>
+                <span class="chip no" style="transition-delay:.6s">🥓 Lardons</span>
+              </div>
+            </div>
+            <div class="cap"><div><h3>Respecte</h3><p>Allergies et régimes vérifiés deux fois : avant et après l’IA.</p></div><span class="num">03</span></div>
+          </article>
+
+          <article class="card wide reveal">
+            <div class="viz">
+              <div class="cook">
+                <div class="ring">
+                  <svg viewBox="0 0 140 140"><circle class="track" cx="70" cy="70" r="60" fill="none" stroke-width="8"/><circle class="bar" cx="70" cy="70" r="60" fill="none" stroke-width="8"/></svg>
+                  <div class="time"><div>04:12<small>minuteur</small></div></div>
+                </div>
+                <div class="step">
+                  <small>Étape 3 sur 5</small>
+                  <p>Verse les œufs battus sur les épinards, puis ajoute le comté râpé.</p>
+                  <div class="dots"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></div>
+                </div>
+              </div>
+            </div>
+            <div class="cap"><div><h3>Cuisine</h3><p>Étape par étape, minuteurs compris, écran toujours allumé.</p></div><span class="num">04</span></div>
+          </article>
+
+          <article class="card wide reveal">
+            <div class="viz">
+              <div class="alts">
+                <div class="alt"><span class="e">🍝</span><div><b>Pâtes à la tomate fraîche</b><small>20 min · 0 achat</small></div><span class="go">→</span></div>
+                <div class="alt"><span class="e">🥗</span><div><b>Salade tiède carottes-citron</b><small>10 min · 0 achat</small></div><span class="go">→</span></div>
+              </div>
+            </div>
+            <div class="cap"><div><h3>Pas envie ? Plan B</h3><p>Deux autres idées en un geste, toujours avec ce que tu as.</p></div><span class="num">05</span></div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <section class="promise">
-      <h2>Moins de charge mentale,<br><em>moins de gaspillage.</em></h2>
-      <p>Frezz AI part de ce que tu as déjà pour que tu n’aies plus à réfléchir au dîner après ta journée.</p>
-      <div class="trust">
-        <span>🔒 Données hébergées en Europe</span>
-        <span>📷 Aucune photo conservée</span>
-        <span>🗑️ Compte supprimable à tout moment</span>
+    <!-- POURQUOI (section claire Cal AI) -->
+    <section class="block light" id="pourquoi">
+      <div class="wrap">
+        <div class="head-row reveal">
+          <div>
+            <span class="kicker">Pourquoi Frezz AI</span>
+            <h2>Moins de charge mentale,<br><span class="serif">moins de gaspillage.</span></h2>
+          </div>
+          <p class="section-lead">La question « on mange quoi ce soir ? » revient tous les jours. On y répond à ta place, en une photo.</p>
+        </div>
+        <div class="why">
+          <div class="why-card reveal"><div class="ico">🧠</div><h3>Libère ta soirée</h3><p>Fini de faire défiler des recettes. Tu reçois une décision claire, prête à cuisiner.</p></div>
+          <div class="why-card reveal"><div class="ico">🥕</div><h3>Avec ce que tu as déjà</h3><p>Les aliments à finir passent en premier. Zéro course, ou le strict minimum.</p></div>
+          <div class="why-card reveal"><div class="ico">🏠</div><h3>Pensé pour ton foyer</h3><p>Portions, restrictions, temps disponible : ton espace retient tout, sur tous tes téléphones.</p></div>
+        </div>
+        <div class="compare reveal">
+          <div class="before">
+            <h3>Sans Frezz AI</h3>
+            <ul>
+              <li>20 minutes à hésiter devant le frigo ouvert</li>
+              <li>Des recettes qui demandent des courses</li>
+              <li>Des aliments oubliés qui finissent à la poubelle</li>
+            </ul>
+          </div>
+          <div class="after">
+            <h3>Avec Frezz AI</h3>
+            <ul>
+              <li>Une décision en moins de 10 secondes</li>
+              <li>Un dîner fait avec ce que tu as</li>
+              <li>Les aliments à finir utilisés en premier</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="block light" id="faq" style="border-radius:0;padding-top:0">
+      <div class="wrap faq">
+        <div class="reveal">
+          <span class="kicker">Questions fréquentes</span>
+          <h2>Tout ce que tu<br><span class="serif">veux savoir.</span></h2>
+          <p class="section-lead">Une autre question ? Écris-nous à <a href="mailto:contact@frezzai.app">contact@frezzai.app</a>.</p>
+        </div>
+        <div class="faq-list reveal">
+          <details open><summary>Frezz AI est-elle gratuite ?</summary><p>Oui, pendant toute la phase de lancement. Si une offre payante arrive plus tard, son prix sera affiché clairement et rien ne sera facturé sans ton accord.</p></details>
+          <details><summary>Mes photos sont-elles conservées ?</summary><p>Non. La photo sert uniquement à repérer tes aliments, puis elle est supprimée. Elle n’est jamais stockée, ni chez nous ni dans ton compte.</p></details>
+          <details><summary>Et si mon frigo est presque vide ?</summary><p>Frezz AI fait avec ce qu’il y a. S’il manque vraiment un ingrédient, l’app te le signale clairement avant que tu commences.</p></details>
+          <details><summary>Mes allergies et mon régime sont-ils respectés ?</summary><p>Oui. Tes restrictions sont vérifiées avant et après la proposition de l’IA : un ingrédient interdit est retiré automatiquement. Vérifie toujours les étiquettes en cas d’allergie sévère.</p></details>
+          <details><summary>Pourquoi faut-il un compte ?</summary><p>Ton compte garde ton foyer, tes restrictions et tes dîners, et les retrouve sur tous tes téléphones. Connexion en un geste avec Apple, Google ou ton e-mail.</p></details>
+          <details><summary>Où sont stockées mes données ?</summary><p>En Union européenne (Irlande). Elles ne sont jamais vendues et tu peux tout effacer depuis l’app, à tout moment.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="final" id="lancement">
+      <div class="wrap">
+        <div class="final-box reveal">
+          <span class="mark"></span>
+          <h2>Ce soir, laisse ton frigo <span class="serif">décider.</span></h2>
+          <p>Frezz AI arrive sur iPhone et Android. Laisse-nous ton adresse, on te prévient dès le lancement.</p>
+          <a class="btn btn-light" href="mailto:contact@frezzai.app?subject=Pr%C3%A9viens-moi%20du%20lancement%20de%20Frezz%20AI">Être prévenu du lancement <span class="arrow">→</span></a>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap">
-      <span>© 2026 Frezz AI</span>
-      <nav>
-        <a href="confidentialite.html">Politique de confidentialité</a>
-        <a href="conditions.html">Conditions d’utilisation</a>
-        <a href="mailto:contact@frezzai.app">Contact</a>
-      </nav>
+      <div class="foot">
+        <div>
+          <a class="brand" href="./"><span class="mark"></span>Frezz <span class="serif" style="color:var(--ochre-deep)">AI</span></a>
+          <p>Ton frigo en photo, ton dîner décidé.</p>
+        </div>
+        <div><h4>Produit</h4><ul><li><a href="#comment">Comment ça marche</a></li><li><a href="#pourquoi">Pourquoi Frezz</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div><h4>Légal</h4><ul><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="conditions.html">Conditions</a></li><li><a href="conditions.html#editeur">Mentions légales</a></li></ul></div>
+        <div><h4>Contact</h4><ul><li><a href="mailto:contact@frezzai.app">contact@frezzai.app</a></li></ul></div>
+      </div>
+      <div class="copy"><span>© 2026 Frezz AI</span><span>Données hébergées en Union européenne</span></div>
     </div>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
