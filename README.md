@@ -21,3 +21,14 @@ Il sert à la **vérification de marque Google** (pour afficher « Frezz AI » a
    - Conditions d’utilisation : `https://frezzai.app/conditions.html`
    - Domaines autorisés : `frezzai.app` **et** `supabase.co`
 3. *Google Auth Platform* → **Vérification** → soumettre. Délai habituel : 2 à 3 jours ouvrés (les scopes `openid`, `email`, `profile` ne demandent pas d’audit de sécurité).
+
+## Motion design
+GSAP 3.15 (ScrollTrigger, SplitText) + Lenis 1.3, chargés depuis cdn.jsdelivr.net (versions figées). Tout le code d'animation est dans `script.js`.
+- Si le CDN ne répond pas, ou si l'utilisateur a activé « réduire les animations », la page s'affiche entière, sans animation (garde-fou dans le `<head>` d'`index.html`).
+- Section « 0 achat » : épinglée au défilement sur ordinateur (plus de 900 px de large), animée sans épinglage sur téléphone.
+
+## Liste d’attente (« Être prévenu du lancement »)
+- Les inscriptions arrivent dans la table Supabase `public.waitlist` (e-mail, plateforme ios/android/both, date). Migration : `supabase/migrations/20260927170000_launch_waitlist.sql` du dépôt de l’app.
+- Le site n’écrit que via la fonction `join_waitlist` (clé publiable). Personne ne peut lire la liste depuis le navigateur.
+- Exporter la liste le jour du lancement : Supabase → Table Editor → `waitlist` → Export CSV. Ou en SQL : `select email, platform from public.waitlist where notified_at is null;`
+- Après l’envoi : `update public.waitlist set notified_at = now();` puis supprimer les lignes (promesse faite dans la politique de confidentialité).

@@ -4,26 +4,37 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Frezz AI — Ton frigo en photo, ton dîner décidé</title>
-  <meta name="description" content="Prends ton frigo en photo : Frezz AI te donne une seule idée de dîner, faite avec ce que tu as, puis te guide pas à pas.">
+  <meta name="description" content="Prends ton frigo en photo : Frezz AI te donne une seule idée de dîner, faite uniquement avec ce que tu as déjà. Zéro achat supplémentaire.">
   <meta name="theme-color" content="#0B0F14">
   <meta property="og:title" content="Frezz AI — Ton dîner, décidé.">
-  <meta property="og:description" content="Une photo de ton frigo, une seule décision, un mode cuisine pas à pas.">
+  <meta property="og:description" content="Une photo de ton frigo, une seule décision, zéro achat supplémentaire.">
   <meta property="og:image" content="logo.png">
   <link rel="icon" href="logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    // Motion : on cache l'intro du hero seulement si les animations vont vraiment tourner (sinon tout reste visible).
+    (function () {
+      var root = document.documentElement;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      root.classList.add('motion');
+      setTimeout(function () { if (!window.gsap) root.classList.remove('motion'); }, 2500);
+    })();
+  </script>
 </head>
 <body>
+  <div class="progress" aria-hidden="true"></div>
+
   <header class="nav" id="nav">
     <div class="wrap">
       <a class="brand" href="./"><span class="mark"></span>Frezz <span class="serif">AI</span></a>
       <nav class="nav-links">
         <a href="#comment">Comment ça marche</a>
-        <a href="#pourquoi">Pourquoi Frezz</a>
+        <a href="#zero">Zéro achat</a>
         <a href="#faq">FAQ</a>
-        <a class="btn btn-light btn-sm" href="#lancement">Être prévenu</a>
+        <a class="btn btn-light btn-sm" href="#lancement" data-waitlist>Être prévenu</a>
       </nav>
     </div>
   </header>
@@ -32,14 +43,14 @@
     <!-- HERO -->
     <section class="hero">
       <div class="wrap">
-        <a class="pill" href="#comment"><b>Nouveau</b>Une décision en moins de 10 s <span>→</span></a>
+        <a class="pill" href="#zero"><b>0 achat</b>Ton dîner avec ce que tu as déjà <span>→</span></a>
         <h1>
-          <span class="line">Ton frigo en photo.</span>
-          <span class="line">Ton dîner, <span class="cycle" id="cycle" aria-label="décidé.">décidé.</span></span>
+          <span class="line"><span class="line-in">Ton frigo en photo.</span></span>
+          <span class="line"><span class="line-in">Ton dîner, <span class="cycle" id="cycle" aria-label="décidé.">décidé.</span></span></span>
         </h1>
-        <p class="lead">Pas une liste de recettes. <strong>Une seule idée de dîner</strong>, faite avec ce que tu as, puis un mode cuisine qui te guide pas à pas.</p>
+        <p class="lead">Pas une liste de recettes. <strong>Une seule idée de dîner</strong>, faite uniquement avec ce qu’il y a chez toi : <strong>zéro achat supplémentaire</strong>. Puis un mode cuisine qui te guide pas à pas.</p>
         <div class="hero-cta">
-          <a class="btn btn-light" href="#lancement">Être prévenu du lancement <span class="arrow">→</span></a>
+          <a class="btn btn-light magnetic" href="#lancement" data-waitlist>Être prévenu du lancement <span class="arrow">→</span></a>
           <a class="btn btn-ghost" href="#comment">Voir comment ça marche</a>
         </div>
         <div class="stores"><span>Bientôt sur l’App Store</span><i></i><span>et Google Play</span></div>
@@ -109,7 +120,7 @@
                 <div class="dec-actions"><span class="alt">Autre idée</span><span class="go">Cuisiner →</span></div>
               </div>
             </div>
-            <div class="tag ok m-right" style="right:-6em;top:9em;animation-delay:-2.2s"><span class="e">✅</span><span class="t"><b>0 course</b><small>tout est chez toi</small></span></div>
+            <div class="tag ok m-right" style="right:-6em;top:9em;animation-delay:-2.2s"><span class="e">✅</span><span class="t"><b>0 achat en plus</b><small>tout est chez toi</small></span></div>
             <div class="tag m-hide" style="left:-6.5em;top:47em;animation-delay:-0.8s"><span class="e">🌙</span><span class="t"><b>Prêt à 20 h</b><small>sans réfléchir</small></span></div>
           </div>
         </div>
@@ -118,27 +129,73 @@
 
     <!-- CHIFFRES -->
     <div class="wrap">
-      <div class="stats reveal">
-        <div class="stat"><b>1</b><span>photo de ton frigo</span></div>
-        <div class="stat"><b>1</b><span>seule décision, pas 50 recettes</span></div>
-        <div class="stat"><b>&lt;10<em>s</em></b><span>pour savoir quoi cuisiner</span></div>
-        <div class="stat"><b>0</b><span>photo conservée</span></div>
+      <div class="stats">
+        <div class="stat"><b data-count="1">1</b><span>photo de ton frigo</span></div>
+        <div class="stat"><b data-count="1">1</b><span>seule décision, pas 50 recettes</span></div>
+        <div class="stat"><b>&lt;<span data-count="10" data-from="60">10</span><em>s</em></b><span>pour savoir quoi cuisiner</span></div>
+        <div class="stat stat-hero"><b data-count="0" data-from="9">0</b><span>achat supplémentaire</span></div>
       </div>
     </div>
+
+    <!-- PROMESSE : 0 ACHAT (moment signature, épinglé au défilement) -->
+    <section class="zero" id="zero">
+      <div class="wrap zero-grid">
+        <div class="zero-copy">
+          <span class="kicker">Notre promesse</span>
+          <h2 class="split">Tout est déjà<br><span class="serif">dans ton frigo.</span></h2>
+          <p class="section-lead">Frezz AI ne te propose que des dîners faits avec ce que tu as. Pas de liste de courses, pas de détour au supermarché, pas d’ingrédient oublié qui finit à la poubelle.</p>
+          <ol class="proofs">
+            <li data-step="0"><span class="dot"></span><div><b>Les aliments à finir passent en premier</b><small>Ce qui risque de se perdre est utilisé ce soir.</small></div></li>
+            <li data-step="1"><span class="dot"></span><div><b>Un vrai dîner avec ce que tu as</b><small>Complet, bon, adapté à ton foyer.</small></div></li>
+            <li data-step="2"><span class="dot"></span><div><b>Zéro achat supplémentaire</b><small>Ton ticket de courses reste à 0,00 €.</small></div></li>
+          </ol>
+        </div>
+
+        <div class="zero-stage" aria-hidden="true">
+          <div class="z-fridge">
+            <div class="z-head"><span class="mark"></span>Ton frigo ce soir</div>
+            <div class="z-items">
+              <span class="z-item">🥬 Épinards <em>à finir</em></span>
+              <span class="z-item">🥚 Œufs</span>
+              <span class="z-item">🧀 Comté</span>
+              <span class="z-item">🧅 Oignon</span>
+              <span class="z-item">🧈 Beurre</span>
+              <span class="z-item">🍅 Tomates</span>
+            </div>
+            <div class="z-empty"><b>✓ Tout est utilisé</b><small>Rien ne se perd, rien à racheter.</small></div>
+          </div>
+
+          <div class="z-plate">
+            <div class="z-ring"></div>
+            <span class="z-dish">🍳</span>
+          </div>
+          <div class="z-dish-name"><small>Ce soir</small>Omelette épinards et comté</div>
+
+          <div class="z-receipt">
+            <div class="r-head">Ticket de courses</div>
+            <div class="r-line"><span>Crème fraîche</span><span>2,49 €</span><i></i></div>
+            <div class="r-line"><span>Lardons</span><span>3,19 €</span><i></i></div>
+            <div class="r-line"><span>Champignons</span><span>2,99 €</span><i></i></div>
+            <div class="r-total"><span>Total</span><span class="r-sum zeroed">0,00 €</span></div>
+            <div class="stamp">0 achat<br>supplémentaire</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- COMMENT ÇA MARCHE (bento x.ai) -->
     <section class="block" id="comment">
       <div class="wrap">
-        <div class="head-row reveal">
+        <div class="head-row">
           <div>
             <span class="kicker">Comment ça marche</span>
-            <h2>Du frigo à l’assiette,<br><span class="serif">sans réfléchir.</span></h2>
+            <h2 class="split">Du frigo à l’assiette,<br><span class="serif">sans réfléchir.</span></h2>
           </div>
-          <p class="section-lead">Frezz AI s’occupe de la partie fatigante : savoir quoi faire avec ce qu’il reste. Toi, tu cuisines.</p>
+          <p class="section-lead fade">Frezz AI s’occupe de la partie fatigante : savoir quoi faire avec ce qu’il reste. Toi, tu cuisines.</p>
         </div>
 
         <div class="bento">
-          <article class="card reveal">
+          <article class="card">
             <div class="viz">
               <div class="chips">
                 <span class="chip lit" style="transition-delay:.05s">🥚 Œufs · 6</span>
@@ -153,7 +210,7 @@
             <div class="cap"><div><h3>Scanne</h3><p>Une photo suffit. L’app repère tes aliments en quelques secondes.</p></div><span class="num">01</span></div>
           </article>
 
-          <article class="card reveal">
+          <article class="card">
             <div class="viz">
               <div class="mini-card">
                 <div class="tag-top">Mon choix pour ce soir</div>
@@ -161,10 +218,10 @@
                 <div class="go">Cuisiner →</div>
               </div>
             </div>
-            <div class="cap"><div><h3>Décide</h3><p>Une seule proposition, adaptée à ton foyer et à ton temps.</p></div><span class="num">02</span></div>
+            <div class="cap"><div><h3>Décide</h3><p>Une seule proposition, adaptée à ton foyer, à ton temps et à ce que tu as.</p></div><span class="num">02</span></div>
           </article>
 
-          <article class="card reveal full-sm">
+          <article class="card full-sm">
             <div class="viz">
               <div class="chips">
                 <span class="chip ok" style="transition-delay:.05s">✓ Sans lactose</span>
@@ -177,12 +234,12 @@
             <div class="cap"><div><h3>Respecte</h3><p>Allergies et régimes vérifiés deux fois : avant et après l’IA.</p></div><span class="num">03</span></div>
           </article>
 
-          <article class="card wide reveal">
+          <article class="card wide">
             <div class="viz">
               <div class="cook">
                 <div class="ring">
                   <svg viewBox="0 0 140 140"><circle class="track" cx="70" cy="70" r="60" fill="none" stroke-width="8"/><circle class="bar" cx="70" cy="70" r="60" fill="none" stroke-width="8"/></svg>
-                  <div class="time"><div>04:12<small>minuteur</small></div></div>
+                  <div class="time"><div><span id="timer">04:12</span><small>minuteur</small></div></div>
                 </div>
                 <div class="step">
                   <small>Étape 3 sur 5</small>
@@ -194,14 +251,14 @@
             <div class="cap"><div><h3>Cuisine</h3><p>Étape par étape, minuteurs compris, écran toujours allumé.</p></div><span class="num">04</span></div>
           </article>
 
-          <article class="card wide reveal">
+          <article class="card wide">
             <div class="viz">
               <div class="alts">
                 <div class="alt"><span class="e">🍝</span><div><b>Pâtes à la tomate fraîche</b><small>20 min · 0 achat</small></div><span class="go">→</span></div>
                 <div class="alt"><span class="e">🥗</span><div><b>Salade tiède carottes-citron</b><small>10 min · 0 achat</small></div><span class="go">→</span></div>
               </div>
             </div>
-            <div class="cap"><div><h3>Pas envie ? Plan B</h3><p>Deux autres idées en un geste, toujours avec ce que tu as.</p></div><span class="num">05</span></div>
+            <div class="cap"><div><h3>Pas envie ? Plan B</h3><p>Deux autres idées en un geste, toujours sans rien acheter.</p></div><span class="num">05</span></div>
           </article>
         </div>
       </div>
@@ -210,24 +267,24 @@
     <!-- POURQUOI (section claire Cal AI) -->
     <section class="block light" id="pourquoi">
       <div class="wrap">
-        <div class="head-row reveal">
+        <div class="head-row">
           <div>
             <span class="kicker">Pourquoi Frezz AI</span>
-            <h2>Moins de charge mentale,<br><span class="serif">moins de gaspillage.</span></h2>
+            <h2 class="split">Moins de charge mentale,<br><span class="serif">moins de gaspillage.</span></h2>
           </div>
-          <p class="section-lead">La question « on mange quoi ce soir ? » revient tous les jours. On y répond à ta place, en une photo.</p>
+          <p class="section-lead fade">La question « on mange quoi ce soir ? » revient tous les jours. On y répond à ta place, en une photo, sans passer par le supermarché.</p>
         </div>
         <div class="why">
-          <div class="why-card reveal"><div class="ico">🧠</div><h3>Libère ta soirée</h3><p>Fini de faire défiler des recettes. Tu reçois une décision claire, prête à cuisiner.</p></div>
-          <div class="why-card reveal"><div class="ico">🥕</div><h3>Avec ce que tu as déjà</h3><p>Les aliments à finir passent en premier. Zéro course, ou le strict minimum.</p></div>
-          <div class="why-card reveal"><div class="ico">🏠</div><h3>Pensé pour ton foyer</h3><p>Portions, restrictions, temps disponible : ton espace retient tout, sur tous tes téléphones.</p></div>
+          <div class="why-card"><div class="ico">🧠</div><h3>Libère ta soirée</h3><p>Fini de faire défiler des recettes. Tu reçois une décision claire, prête à cuisiner.</p></div>
+          <div class="why-card"><div class="ico">🛒</div><h3>Zéro achat en plus</h3><p>Uniquement ce que tu as déjà. Les aliments à finir passent en premier, rien ne se perd.</p></div>
+          <div class="why-card"><div class="ico">🏠</div><h3>Pensé pour ton foyer</h3><p>Portions, restrictions, temps disponible : ton espace retient tout, sur tous tes téléphones.</p></div>
         </div>
-        <div class="compare reveal">
+        <div class="compare">
           <div class="before">
             <h3>Sans Frezz AI</h3>
             <ul>
               <li>20 minutes à hésiter devant le frigo ouvert</li>
-              <li>Des recettes qui demandent des courses</li>
+              <li>Des recettes qui t’envoient faire des courses</li>
               <li>Des aliments oubliés qui finissent à la poubelle</li>
             </ul>
           </div>
@@ -235,7 +292,7 @@
             <h3>Avec Frezz AI</h3>
             <ul>
               <li>Une décision en moins de 10 secondes</li>
-              <li>Un dîner fait avec ce que tu as</li>
+              <li>Un dîner fait avec ce que tu as, 0 achat en plus</li>
               <li>Les aliments à finir utilisés en premier</li>
             </ul>
           </div>
@@ -244,17 +301,17 @@
     </section>
 
     <!-- FAQ -->
-    <section class="block light" id="faq" style="border-radius:0;padding-top:0">
+    <section class="block light faq-block" id="faq">
       <div class="wrap faq">
-        <div class="reveal">
+        <div>
           <span class="kicker">Questions fréquentes</span>
-          <h2>Tout ce que tu<br><span class="serif">veux savoir.</span></h2>
-          <p class="section-lead">Une autre question ? Écris-nous à <a href="mailto:contact@frezzai.app">contact@frezzai.app</a>.</p>
+          <h2 class="split">Tout ce que tu<br><span class="serif">veux savoir.</span></h2>
+          <p class="section-lead fade">Une autre question ? Écris-nous à <a href="mailto:contact@frezzai.app">contact@frezzai.app</a>.</p>
         </div>
-        <div class="faq-list reveal">
-          <details open><summary>Frezz AI est-elle gratuite ?</summary><p>Oui, pendant toute la phase de lancement. Si une offre payante arrive plus tard, son prix sera affiché clairement et rien ne sera facturé sans ton accord.</p></details>
+        <div class="faq-list">
+          <details open><summary>Vais-je devoir acheter des ingrédients ?</summary><p>Non, c’est notre promesse : Frezz AI part uniquement de ce qu’il y a chez toi. Si une idée demandait vraiment un ingrédient en plus, l’app te le signale avant, et tu peux choisir une autre idée sans achat.</p></details>
+          <details><summary>Frezz AI est-elle gratuite ?</summary><p>Oui, pendant toute la phase de lancement. Si une offre payante arrive plus tard, son prix sera affiché clairement et rien ne sera facturé sans ton accord.</p></details>
           <details><summary>Mes photos sont-elles conservées ?</summary><p>Non. La photo sert uniquement à repérer tes aliments, puis elle est supprimée. Elle n’est jamais stockée, ni chez nous ni dans ton compte.</p></details>
-          <details><summary>Et si mon frigo est presque vide ?</summary><p>Frezz AI fait avec ce qu’il y a. S’il manque vraiment un ingrédient, l’app te le signale clairement avant que tu commences.</p></details>
           <details><summary>Mes allergies et mon régime sont-ils respectés ?</summary><p>Oui. Tes restrictions sont vérifiées avant et après la proposition de l’IA : un ingrédient interdit est retiré automatiquement. Vérifie toujours les étiquettes en cas d’allergie sévère.</p></details>
           <details><summary>Pourquoi faut-il un compte ?</summary><p>Ton compte garde ton foyer, tes restrictions et tes dîners, et les retrouve sur tous tes téléphones. Connexion en un geste avec Apple, Google ou ton e-mail.</p></details>
           <details><summary>Où sont stockées mes données ?</summary><p>En Union européenne (Irlande). Elles ne sont jamais vendues et tu peux tout effacer depuis l’app, à tout moment.</p></details>
@@ -265,11 +322,11 @@
     <!-- CTA FINAL -->
     <section class="final" id="lancement">
       <div class="wrap">
-        <div class="final-box reveal">
+        <div class="final-box spot">
           <span class="mark"></span>
-          <h2>Ce soir, laisse ton frigo <span class="serif">décider.</span></h2>
-          <p>Frezz AI arrive sur iPhone et Android. Laisse-nous ton adresse, on te prévient dès le lancement.</p>
-          <a class="btn btn-light" href="mailto:contact@frezzai.app?subject=Pr%C3%A9viens-moi%20du%20lancement%20de%20Frezz%20AI">Être prévenu du lancement <span class="arrow">→</span></a>
+          <h2 class="split">Ce soir, laisse ton frigo <span class="serif">décider.</span></h2>
+          <p>Frezz AI arrive sur iPhone et Android. Laisse ton e-mail : on t’écrit une seule fois, le jour du lancement.</p>
+          <a class="btn btn-light magnetic" href="mailto:contact@frezzai.app?subject=Pr%C3%A9viens-moi%20du%20lancement%20de%20Frezz%20AI" data-waitlist>Être prévenu du lancement <span class="arrow">→</span></a>
         </div>
       </div>
     </section>
@@ -280,9 +337,9 @@
       <div class="foot">
         <div>
           <a class="brand" href="./"><span class="mark"></span>Frezz <span class="serif" style="color:var(--ochre-deep)">AI</span></a>
-          <p>Ton frigo en photo, ton dîner décidé.</p>
+          <p>Ton frigo en photo, ton dîner décidé. Zéro achat supplémentaire.</p>
         </div>
-        <div><h4>Produit</h4><ul><li><a href="#comment">Comment ça marche</a></li><li><a href="#pourquoi">Pourquoi Frezz</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+        <div><h4>Produit</h4><ul><li><a href="#comment">Comment ça marche</a></li><li><a href="#zero">Zéro achat</a></li><li><a href="#faq">FAQ</a></li></ul></div>
         <div><h4>Légal</h4><ul><li><a href="confidentialite.html">Confidentialité</a></li><li><a href="conditions.html">Conditions</a></li><li><a href="conditions.html#editeur">Mentions légales</a></li></ul></div>
         <div><h4>Contact</h4><ul><li><a href="mailto:contact@frezzai.app">contact@frezzai.app</a></li></ul></div>
       </div>
@@ -290,6 +347,48 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Fenêtre « Être prévenu du lancement » -->
+  <div class="modal" id="waitlist" role="dialog" aria-modal="true" aria-labelledby="wl-title" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-card" data-lenis-prevent>
+      <button class="modal-x" type="button" aria-label="Fermer" data-close>✕</button>
+
+      <form class="wl-form" id="wl-form" novalidate>
+        <div class="wl-badge"><span class="mark"></span></div>
+        <h3 id="wl-title">Sois prévenu du lancement</h3>
+        <p class="wl-sub">Un seul e-mail, le jour où Frezz AI arrive sur ton store. Pas de spam, promis.</p>
+
+        <fieldset class="wl-platform">
+          <legend>Ton téléphone</legend>
+          <label><input type="radio" name="platform" value="ios"><span>iPhone</span></label>
+          <label><input type="radio" name="platform" value="android"><span>Android</span></label>
+          <label><input type="radio" name="platform" value="both" checked><span>Les deux</span></label>
+        </fieldset>
+
+        <label class="wl-field">
+          <span class="sr">Adresse e-mail</span>
+          <input type="email" name="email" id="wl-email" placeholder="ton@email.com" autocomplete="email" inputmode="email" required>
+        </label>
+        <input class="hp" type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p class="wl-error" id="wl-error" role="alert"></p>
+
+        <button class="btn btn-ink wl-submit" type="submit"><span class="label">Me prévenir</span><span class="spinner" aria-hidden="true"></span></button>
+        <p class="wl-legal">Ton adresse sert uniquement à t’annoncer le lancement, puis elle est supprimée. <a href="confidentialite.html#liste-attente">Confidentialité</a></p>
+      </form>
+
+      <div class="wl-done" aria-live="polite">
+        <svg class="check" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="36"/><path d="M24 41l11 11 21-23"/></svg>
+        <h3>C’est noté !</h3>
+        <p>On t’écrit dès que Frezz AI est disponible<span id="wl-where"></span>. D’ici là, garde tes épinards au frais.</p>
+        <button class="btn btn-ink" type="button" data-close>Parfait</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/SplitText.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.min.js" defer></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
