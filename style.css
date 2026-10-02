@@ -117,25 +117,34 @@ h1 .line { display: block; }
 .status.on-dark { color: #fff; }
 .home-bar { position: absolute; left: 50%; bottom: 0.75em; width: 10.5em; height: 0.42em; border-radius: 1em; transform: translateX(-50%); background: currentColor; opacity: 0.85; z-index: 5; }
 
-/* écran scanner : viseur photo comme l'appareil photo de l'iPhone (bandeaux noirs, photo entière au centre) */
-.screen.cam { background: #000; color: #fff; }
-.fridge { position: absolute; left: 0; right: 0; top: 8.4em; height: 42.3em; overflow: hidden; background: #000; }
-.fridge-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
-.cam-shade { position: absolute; left: 0; right: 0; top: 8.4em; height: 42.3em; background: radial-gradient(ellipse 120% 85% at 50% 50%, transparent 58%, rgba(0,0,0,0.3)); pointer-events: none; }
-.cam-top { position: absolute; top: 4.5em; left: 2em; right: 2em; display: flex; align-items: center; justify-content: space-between; color: #fff; }
-.cam-btn { width: 3.6em; height: 3.6em; border-radius: 50%; background: rgba(255,255,255,0.2); backdrop-filter: blur(8px); display: grid; place-items: center; font-size: 1.4em; }
-.cam-top .cam-btn { width: 3.2em; height: 3.2em; font-size: 1.1em; background: rgba(255,255,255,0.14); }
-.cam-title { font-weight: 600; font-size: 1.6em; }
-.frame-corner { position: absolute; width: 4em; height: 4em; border: 0.35em solid #fff; }
-.frame-corner.tl { top: 10.2em; left: 2.4em; border-right: 0; border-bottom: 0; border-radius: 1.6em 0 0 0; }
-.frame-corner.tr { top: 10.2em; right: 2.4em; border-left: 0; border-bottom: 0; border-radius: 0 1.6em 0 0; }
-.frame-corner.bl { bottom: 11.3em; left: 2.4em; border-right: 0; border-top: 0; border-radius: 0 0 0 1.6em; }
-.frame-corner.br { bottom: 11.3em; right: 2.4em; border-left: 0; border-top: 0; border-radius: 0 0 1.6em 0; }
-.scanline { position: absolute; left: 3.2em; right: 3.2em; top: 10.8em; height: 0.3em; border-radius: 1em; background: linear-gradient(90deg, transparent, var(--ochre-light), transparent); box-shadow: 0 0 1.6em 0.4em rgba(227, 192, 136, 0.55); animation: scan 3.2s var(--ease) infinite alternate; }
-@keyframes scan { to { top: 47.6em; } }
-.shutter-row { position: absolute; bottom: 2.1em; left: 0; right: 0; display: flex; align-items: center; justify-content: space-around; }
-.shutter { width: 6.4em; height: 6.4em; border-radius: 50%; border: 0.42em solid #fff; display: grid; place-items: center; }
-.shutter::after { content: ''; width: 4.9em; height: 4.9em; border-radius: 50%; background: #fff; }
+/* écran scanner (façon Cal AI) : photo plein écran, interface posée dessus, pastille blanche « Scan photo » */
+.screen.cam { background: #0B0F14; color: #fff; }
+.fridge { position: absolute; inset: 0; overflow: hidden; }
+.fridge-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 50%; }
+/* voile très léger, seulement là où le texte blanc doit rester lisible (barre d'état, titre) */
+.cam-shade { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,0.42) 0%, rgba(0,0,0,0.16) 9%, transparent 17%, transparent 76%, rgba(0,0,0,0.16) 90%, rgba(0,0,0,0.3) 100%); }
+.cam-top { position: absolute; top: 4.6em; left: 2em; right: 2em; display: flex; align-items: center; justify-content: space-between; color: #fff; }
+.cam-btn { width: 3.5em; height: 3.5em; border-radius: 50%; background: rgba(20, 22, 26, 0.38); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: grid; place-items: center; }
+.cam-btn svg, .cam-mini svg { width: 1.6em; height: 1.6em; }
+.cam-title { font-weight: 600; font-size: 1.55em; text-shadow: 0 0.06em 0.5em rgba(0,0,0,0.35); }
+.frame-corner { position: absolute; width: 4em; height: 4em; border: 0.3em solid #fff; filter: drop-shadow(0 0 0.4em rgba(0,0,0,0.25)); }
+.frame-corner.tl { top: 11.6em; left: 3.2em; border-right: 0; border-bottom: 0; border-radius: 1.4em 0 0 0; }
+.frame-corner.tr { top: 11.6em; right: 3.2em; border-left: 0; border-bottom: 0; border-radius: 0 1.4em 0 0; }
+.frame-corner.bl { bottom: 17.4em; left: 3.2em; border-right: 0; border-top: 0; border-radius: 0 0 0 1.4em; }
+.frame-corner.br { bottom: 17.4em; right: 3.2em; border-left: 0; border-top: 0; border-radius: 0 0 1.4em 0; }
+.scanline { position: absolute; left: 4em; right: 4em; top: 12.4em; height: 0.3em; border-radius: 1em; background: linear-gradient(90deg, transparent, var(--ochre-light), transparent); box-shadow: 0 0 1.6em 0.4em rgba(227, 192, 136, 0.55); animation: scan 3.2s var(--ease) infinite alternate; }
+@keyframes scan { to { top: 41.4em; } }
+/* barre d'outils : pastille blanche, aucun contour */
+.cam-tools { position: absolute; left: 50%; bottom: 12.4em; transform: translateX(-50%); display: flex; align-items: center; gap: 0.2em; padding: 0.35em; border-radius: 2.4em; background: rgba(255, 255, 255, 0.82); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 0.8em 2em rgba(0, 0, 0, 0.18); white-space: nowrap; color: var(--ink); }
+.tool { display: grid; place-items: center; width: 3.6em; height: 3.3em; border-radius: 2em; color: #3A3F47; }
+.tool svg { width: 1.6em; height: 1.6em; }
+.tool.on { display: flex; align-items: center; gap: 0.55em; width: auto; padding: 0 1.3em 0 1em; background: #fff; color: var(--ink); box-shadow: 0 0.25em 0.8em rgba(0, 0, 0, 0.1); }
+.tool.on b { font-size: 1.3em; font-weight: 600; letter-spacing: -0.01em; }
+.shutter-row { position: absolute; bottom: 3.2em; left: 2.8em; right: 2.8em; display: flex; align-items: center; justify-content: space-between; }
+.cam-mini { width: 3.6em; height: 3.6em; border-radius: 50%; background: rgba(20, 22, 26, 0.38); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: grid; place-items: center; color: #fff; }
+.cam-mini.ghost { visibility: hidden; }
+.shutter { width: 7em; height: 7em; border-radius: 50%; border: 0.4em solid rgba(255, 255, 255, 0.92); display: grid; place-items: center; box-shadow: 0 0.4em 1.4em rgba(0, 0, 0, 0.2); }
+.shutter::after { content: ''; width: 5.5em; height: 5.5em; border-radius: 50%; background: #fff; }
 
 /* écran d'accueil : la vraie capture, calée sous la barre d'état, sans recadrage */
 .screen.app { background: #F6F5F2; }
@@ -351,7 +360,7 @@ footer { background: var(--canvas); color: var(--ink); padding: 70px 0 40px; }
   .device.front { margin-bottom: 40px; }
   .tag { font-size: 1.15em; }
   .tag.m-hide { display: none; }
-  .tag.m-left { left: -1.2em !important; top: 29em !important; }
+  .tag.m-left { left: -1.2em !important; top: 32em !important; }
   .tag.m-right { right: -1em !important; top: 30em !important; }
   .stats { grid-template-columns: 1fr 1fr; margin-top: 56px; }
   .stat:nth-child(3) { border-left: 0; }
