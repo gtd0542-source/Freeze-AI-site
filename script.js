@@ -98,10 +98,8 @@
       .fromTo('.hero .stores', { autoAlpha: 0, y: 10 }, { autoAlpha: 1, y: 0 }, 0.8)
       .fromTo('.hero .device.back', { autoAlpha: 0, y: 180, rotate: -8 }, { autoAlpha: 1, y: 0, rotate: 0, duration: 1.7 }, 0.55)
       .fromTo('.hero .device.front', { autoAlpha: 0, y: 220, rotate: 6 }, { autoAlpha: 1, y: 0, rotate: 0, duration: 1.7 }, 0.68)
-      .from('.hero .food', { scale: 0, autoAlpha: 0, duration: 0.6, ease: 'back.out(2.2)', stagger: { each: 0.05, from: 'random' } }, 1.05)
-      .from('.hero .plate span', { scale: 0, rotate: -120, duration: 1.1, ease: 'back.out(1.8)' }, 1.1)
-      .from('.hero .orbit', { scale: 0, autoAlpha: 0, duration: 0.6, ease: 'back.out(2)', stagger: 0.09 }, 1.2)
-      .from('.hero .dec-body > *, .hero .dec-actions', { autoAlpha: 0, y: 16, stagger: 0.07, duration: 0.9 }, 1.15)
+      .from('.hero .fridge-photo', { scale: 1.14, filter: 'blur(6px)', duration: 1.6, ease: 'power2.out' }, 0.9)
+      .from('.hero .app-shot', { autoAlpha: 0, y: 24, duration: 1.1 }, 1.1)
       .from('.hero .tag', { autoAlpha: 0, scale: 0.6, y: 24, duration: 0.9, ease: 'back.out(1.7)', stagger: 0.12 }, 1.4)
       .to(doodle, { strokeDashoffset: 0, duration: 1.1, ease: 'power2.inOut', stagger: 0.35 }, 1.5)
       .add(startCycle, 1.8);
@@ -368,7 +366,7 @@
     setTimeout(() => $('.wl-done .btn', modal).focus({ preventScroll: true }), 300);
   };
 
-  $('[data-waitlist]').forEach((el) => el.addEventListener('click', open));
+  $$('[data-waitlist]').forEach((el) => el.addEventListener('click', open));
   // Liens « Être prévenu » des pages légales : ./#lancement ouvre directement la fenêtre.
   if (window.location.hash === '#lancement') setTimeout(open, 900);
   $$('[data-close]', modal).forEach((el) => el.addEventListener('click', close));
