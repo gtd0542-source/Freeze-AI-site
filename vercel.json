@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/confidentialite.html", "destination": "/fr/confidentialite.html", "permanent": true },
+    { "source": "/conditions.html", "destination": "/fr/conditions.html", "permanent": true },
+    { "source": "/cgv.html", "destination": "/fr/cgv.html", "permanent": true },
+    { "source": "/mentions-legales.html", "destination": "/fr/mentions-legales.html", "permanent": true }
+  ]
+}

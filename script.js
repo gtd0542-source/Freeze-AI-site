@@ -1,5 +1,5 @@
-// Frezz AI — motion design (GSAP + ScrollTrigger + SplitText + Lenis) et liste d'attente.
-// Principe : sans GSAP (CDN bloqué) ou avec « réduire les animations », tout reste visible et utilisable.
+// Frezz AI — motion design (GSAP + ScrollTrigger + SplitText + Lenis), pages anglaises et françaises.
+// Principe : sans GSAP (fichier bloqué) ou avec « réduire les animations », tout reste visible et utilisable.
 (() => {
   const root = document.documentElement;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -7,6 +7,10 @@
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
   let lenis = null;
+  // Amounts follow the page language: dollars on the English site, euros on the French one.
+  const money = (value) => (root.lang === 'fr'
+    ? new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' })
+    : new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' })).format(value);
 
   // ---------- Barre du haut ----------
   const nav = $('#nav');
@@ -27,11 +31,11 @@
     }, 1000);
   };
 
-  // ---------- Titre : « décidé. / trouvé. / prêt. » lettre par lettre ----------
+  // ---------- Titre : les mots du titre animé viennent de la page (data-words), dans sa langue ----------
   const startCycle = () => {
     const cycle = $('#cycle');
     if (!cycle) return;
-    const words = ['décidé.', 'trouvé.', 'prêt.'];
+    const words = (cycle.dataset.words || cycle.textContent.trim()).split('|');
     let index = 0;
     const render = (word, instant = false) => {
       cycle.setAttribute('aria-label', word);
@@ -156,7 +160,7 @@
       const mm = gsap.matchMedia();
       mm.add({ desktop: '(min-width: 901px)', mobile: '(max-width: 900px)' }, (context) => {
         const { desktop } = context.conditions;
-        sumEl.textContent = '8,67 €';
+        sumEl.textContent = money(8.67);
         sumEl.classList.remove('zeroed');
         const sum = { v: 8.67 };
         const tl = gsap.timeline({
@@ -185,11 +189,11 @@
           .fromTo('.r-line span', { opacity: 1 }, { opacity: 0.35, duration: 0.3, stagger: 0.11 }, 2.95)
           .to(sum, {
             v: 0, duration: 0.9, ease: 'power2.inOut',
-            onUpdate: () => { sumEl.textContent = `${sum.v.toFixed(2).replace('.', ',')} €`; sumEl.classList.toggle('zeroed', sum.v < 0.005); },
+            onUpdate: () => { sumEl.textContent = money(sum.v); sumEl.classList.toggle('zeroed', sum.v < 0.005); },
           }, 3.1)
           .fromTo('.stamp', { autoAlpha: 0, scale: 2.4, rotate: -20 }, { autoAlpha: 1, scale: 1, rotate: 0, duration: 0.45, ease: 'back.out(2.6)' }, 4.0)
           .to({}, { duration: 0.6 });
-        return () => { sumEl.textContent = '0,00 €'; sumEl.classList.add('zeroed'); };
+        return () => { sumEl.textContent = money(0); sumEl.classList.add('zeroed'); };
       });
     }
 

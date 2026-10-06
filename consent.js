@@ -1,7 +1,8 @@
 // Choix de cookies de frezzai.app (recommandations CNIL) :
 // - aucun traceur non nécessaire avant l'accord : les scripts concernés sont écrits <script type="text/plain"
 //   data-consent="ads"> et ne s'exécutent qu'après « Tout accepter » (ou la case cochée dans « Personnaliser ») ;
-// - « Tout refuser » est aussi visible et aussi simple que « Tout accepter » ;
+// - « Tout refuser » / « Reject all » est aussi visible et aussi simple que « Tout accepter » / « Accept all » ;
+// - textes en anglais par défaut, en français sur les pages /fr/ ;
 // - le choix est gardé 6 mois, puis redemandé ;
 // - retrait à tout moment, aussi simple que l'accord : « Gérer mes cookies » dans le pied de page.
 // Seul traceur soumis à l'accord : le pixel publicitaire Whop. Les statistiques Vercel (anonymes, sans cookie) et la
@@ -59,6 +60,25 @@
     });
   }
 
+  var TEXT = {
+    en: {
+      title: 'Your cookie choices',
+      text: 'Our visit statistics are anonymous and cookie-free. With your consent, we add Whop’s advertising pixel to learn which ads bring you here: it sets cookies and computes a fingerprint of your browser. You can change your mind at any time.',
+      more: 'Learn more', cookiesPage: '/cookies.html',
+      necessary: 'Necessary', necessaryHint: 'Remembers your choice for 6 months. Always on.', necessaryLabel: 'Necessary, always on',
+      ads: 'Advertising measurement (Whop)', adsHint: '_wuid cookies, browser fingerprint. Whop, United States.',
+      refuse: 'Reject all', accept: 'Accept all', customize: 'Customize my choices', save: 'Save my choices',
+    },
+    fr: {
+      title: 'Tes choix de cookies',
+      text: 'Nos statistiques de visite sont anonymes et sans cookie. Avec ton accord, nous ajoutons le pixel publicitaire de Whop pour savoir quelles publicités t’amènent ici : il dépose des cookies et calcule une empreinte de ton navigateur. Tu peux changer d’avis à tout moment.',
+      more: 'En savoir plus', cookiesPage: '/fr/cookies.html',
+      necessary: 'Nécessaire', necessaryHint: 'Mémoriser ton choix pendant 6 mois. Toujours actif.', necessaryLabel: 'Nécessaire, toujours actif',
+      ads: 'Mesure publicitaire (Whop)', adsHint: 'Cookies _wuid, empreinte du navigateur. Whop, États-Unis.',
+      refuse: 'Tout refuser', accept: 'Tout accepter', customize: 'Personnaliser mes choix', save: 'Enregistrer mes choix',
+    },
+  };
+
   var banner = null;
 
   function build() {
@@ -67,24 +87,23 @@
     banner.setAttribute('role', 'dialog');
     banner.setAttribute('aria-labelledby', 'consent-title');
     banner.setAttribute('aria-describedby', 'consent-text');
+    var t = TEXT[document.documentElement.lang === 'fr' ? 'fr' : 'en'];
     banner.innerHTML =
-      '<h2 id="consent-title">Tes choix de cookies</h2>' +
-      '<p id="consent-text">Nos statistiques de visite sont anonymes et sans cookie. Avec ton accord, nous ajoutons le pixel ' +
-      'publicitaire de Whop pour savoir quelles publicités t’amènent ici : il dépose des cookies et calcule une empreinte ' +
-      'de ton navigateur. Tu peux changer d’avis à tout moment. <a href="cookies.html">En savoir plus</a></p>' +
+      '<h2 id="consent-title">' + t.title + '</h2>' +
+      '<p id="consent-text">' + t.text + ' <a href="' + t.cookiesPage + '">' + t.more + '</a></p>' +
       '<div class="consent-details" id="consent-details" hidden>' +
-      '<div class="consent-row"><span><b>Nécessaire</b><small>Mémoriser ton choix pendant 6 mois. Toujours actif.</small></span>' +
-      '<input type="checkbox" checked disabled aria-label="Nécessaire, toujours actif"></div>' +
-      '<label class="consent-row" for="consent-ads"><span><b>Mesure publicitaire (Whop)</b><small>Cookies _wuid, empreinte du navigateur. ' +
-      'Whop, États-Unis.</small></span><input type="checkbox" id="consent-ads"></label>' +
+      '<div class="consent-row"><span><b>' + t.necessary + '</b><small>' + t.necessaryHint + '</small></span>' +
+      '<input type="checkbox" checked disabled aria-label="' + t.necessaryLabel + '"></div>' +
+      '<label class="consent-row" for="consent-ads"><span><b>' + t.ads + '</b><small>' + t.adsHint + '</small></span>' +
+      '<input type="checkbox" id="consent-ads"></label>' +
       '</div>' +
       '<div class="consent-actions">' +
-      '<button type="button" class="consent-btn" data-choice="refuse">Tout refuser</button>' +
-      '<button type="button" class="consent-btn" data-choice="accept">Tout accepter</button>' +
+      '<button type="button" class="consent-btn" data-choice="refuse">' + t.refuse + '</button>' +
+      '<button type="button" class="consent-btn" data-choice="accept">' + t.accept + '</button>' +
       '</div>' +
       '<div class="consent-more-row">' +
-      '<button type="button" class="consent-link" data-choice="details" aria-expanded="false" aria-controls="consent-details">Personnaliser mes choix</button>' +
-      '<button type="button" class="consent-btn consent-save" data-choice="save" hidden>Enregistrer mes choix</button>' +
+      '<button type="button" class="consent-link" data-choice="details" aria-expanded="false" aria-controls="consent-details">' + t.customize + '</button>' +
+      '<button type="button" class="consent-btn consent-save" data-choice="save" hidden>' + t.save + '</button>' +
       '</div>';
     document.body.appendChild(banner);
     banner.addEventListener('click', function (event) {

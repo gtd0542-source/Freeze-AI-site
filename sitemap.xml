@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.frezzai.app/</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority></url>
-  <url><loc>https://www.frezzai.app/cgv.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority></url>
-  <url><loc>https://www.frezzai.app/conditions.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority></url>
-  <url><loc>https://www.frezzai.app/confidentialite.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority></url>
-  <url><loc>https://www.frezzai.app/cookies.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority></url>
-  <url><loc>https://www.frezzai.app/mentions-legales.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://www.frezzai.app/</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/"/></url>
+  <url><loc>https://www.frezzai.app/fr/</loc><lastmod>2026-10-06</lastmod><priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/"/></url>
+  <url><loc>https://www.frezzai.app/terms-of-sale.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/terms-of-sale.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/cgv.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/terms-of-sale.html"/></url>
+  <url><loc>https://www.frezzai.app/fr/cgv.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/terms-of-sale.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/cgv.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/terms-of-sale.html"/></url>
+  <url><loc>https://www.frezzai.app/terms.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/terms.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/conditions.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/terms.html"/></url>
+  <url><loc>https://www.frezzai.app/fr/conditions.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/terms.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/conditions.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/terms.html"/></url>
+  <url><loc>https://www.frezzai.app/privacy.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/privacy.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/confidentialite.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/privacy.html"/></url>
+  <url><loc>https://www.frezzai.app/fr/confidentialite.html</loc><lastmod>2026-10-06</lastmod><priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/privacy.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/confidentialite.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/privacy.html"/></url>
+  <url><loc>https://www.frezzai.app/cookies.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/cookies.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/cookies.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/cookies.html"/></url>
+  <url><loc>https://www.frezzai.app/fr/cookies.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/cookies.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/cookies.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/cookies.html"/></url>
+  <url><loc>https://www.frezzai.app/legal-notice.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/legal-notice.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/mentions-legales.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/legal-notice.html"/></url>
+  <url><loc>https://www.frezzai.app/fr/mentions-legales.html</loc><lastmod>2026-10-06</lastmod><priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.frezzai.app/legal-notice.html"/><xhtml:link rel="alternate" hreflang="fr" href="https://www.frezzai.app/fr/mentions-legales.html"/><xhtml:link rel="alternate" hreflang="x-default" href="https://www.frezzai.app/legal-notice.html"/></url>
 </urlset>
