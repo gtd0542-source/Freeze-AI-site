@@ -123,8 +123,8 @@
     gsap.from('.stat', { autoAlpha: 0, y: 40, duration: 1.2, ease: 'expo.out', stagger: 0.1, scrollTrigger: { trigger: '.stats', start: 'top 88%' } });
     $$('[data-count]').forEach((el) => {
       const to = Number(el.dataset.count);
+      // The final figure stays in the page until the count starts: never a wrong figure if the animation does not run.
       const counter = { v: Number(el.dataset.from ?? 0) };
-      el.textContent = String(counter.v);
       gsap.to(counter, {
         v: to, duration: 1.8, ease: 'power3.out',
         scrollTrigger: { trigger: '.stats', start: 'top 88%' },

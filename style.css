@@ -31,7 +31,7 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-x: clip; } /* Android : aucun glissement latéral pendant les animations d’entrée */
 html:not(.lenis) { scroll-behavior: smooth; }
 /* Lenis (défilement fluide) */
 html.lenis, html.lenis body { height: auto; }
@@ -153,8 +153,9 @@ h1 .line { display: block; }
 .shutter::after { content: ''; width: 5.5em; height: 5.5em; border-radius: 50%; background: #fff; }
 
 /* écran d'accueil : la vraie capture, calée sous la barre d'état, sans recadrage */
-.screen.app { background: #F6F5F2; }
-.app-shot { position: absolute; left: 0; top: 3.1em; width: 100%; height: auto; display: block; }
+.screen.app { background: #F6EEE0; }
+/* La capture prévoit déjà la place de la barre d’état et de la barre d’accueil : elle remplit tout l’écran. */
+.app-shot { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 
 /* étiquettes flottantes */
 .tag { position: absolute; z-index: 6; display: flex; align-items: center; gap: 0.7em; background: #fff; color: var(--ink); border-radius: 1.6em; padding: 0.9em 1.4em 0.9em 1em; box-shadow: 0 1.2em 3em rgba(0,0,0,0.28); white-space: nowrap; animation: bob 5s ease-in-out infinite; }
