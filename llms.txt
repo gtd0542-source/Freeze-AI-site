@@ -1,0 +1,30 @@
+# Frezz AI
+
+> Frezz AI est une application web en français qui décide du dîner à partir d'une photo du frigo : elle repère les aliments, propose une seule idée de dîner pensée avec ce que la personne a déjà (objectif : zéro achat supplémentaire), puis guide la préparation pas à pas.
+
+Pour qui : les particuliers qui cuisinent chez eux et n'ont plus envie de se demander « on mange quoi ce soir ? ».
+
+Comment ça marche : 1) une photo du frigo (ou les ingrédients écrits) ; 2) deux questions (temps disponible, énergie) ; 3) une proposition de dîner adaptée au foyer, aux allergies et au régime déclarés, vérifiés avant et après l'IA par détection automatique des ingrédients ; 4) un mode cuisine pas à pas avec minuteurs.
+
+Offres : la photo et la détection des aliments sont gratuites. Frezz Premium débloque les dîners trouvés, les quantités exactes, le mode cuisine et les autres idées : 3 jours d'essai sans carte bancaire, puis 9 $ pour 1 mois ou 59 $ pour 1 an, en paiement unique, sans renouvellement automatique. Paiement par carte (Visa, Mastercard).
+
+Disponibilité : dans un navigateur internet (https://app.frezzai.app), sur téléphone comme sur ordinateur ; applications iPhone et Android annoncées comme à venir. Compte obligatoire (Google ou e-mail).
+
+Données : les photos ne sont pas enregistrées ; compte, préférences et dîners hébergés en Union européenne (Irlande) ; jamais de revente de données.
+
+## Pages principales
+
+- [Accueil](https://www.frezzai.app/): présentation, fonctionnement, promesse « zéro achat », FAQ
+- [Application](https://app.frezzai.app/): l'outil lui-même (inscription, photo, décision, mode cuisine)
+
+## Informations légales
+
+- [Conditions générales de vente](https://www.frezzai.app/cgv.html): Frezz Premium, prix, essai, rétractation, garanties
+- [Conditions générales d'utilisation](https://www.frezzai.app/conditions.html): règles d'usage, limites de l'IA, compte
+- [Politique de confidentialité](https://www.frezzai.app/confidentialite.html): données traitées, finalités, durées, droits
+- [Cookies et traceurs](https://www.frezzai.app/cookies.html): liste des traceurs et gestion du consentement
+- [Mentions légales](https://www.frezzai.app/mentions-legales.html): éditeur, hébergeurs, contact
+
+## Contact
+
+- contact@frezzai.app

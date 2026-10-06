@@ -1,34 +1,35 @@
-# Site Frezz AI (accueil + confidentialité + conditions)
+# Site Frezz AI (frezzai.app)
 
-Site statique, sans build : `index.html`, `confidentialite.html`, `conditions.html`, `style.css`, `script.js`, `logo.png`.
-Design : structure Cal AI (téléphones + étiquettes flottantes, arguments, FAQ) × ambiance x.ai (fond nuit, titre animé, grille de cartes, chiffres), aux couleurs de l’app (encre, crème, ocre, Jost + Fraunces).
-Il sert à la **vérification de marque Google** (pour afficher « Frezz AI » au lieu de `zfzxqczbxunhggvowwlb.supabase.co` sur la page de connexion Google). Il sera aussi réutilisé pour l'App Store et le Play Store, qui demandent une politique de confidentialité en ligne.
+Site statique, sans build, publié par Vercel depuis le dépôt `gtd0542-source/Freeze-AI-site` (adresse principale :
+https://www.frezzai.app). Publication : `git subtree split --prefix=site` depuis le dépôt de l’app, puis push sur `main`.
+Il sert aussi à la vérification de marque Google (page de connexion) et servira aux fiches App Store et Play Store.
 
-## À compléter avant publication
-- `conditions.html` → section *Mentions légales* : nom ou société de l’éditeur, adresse, hébergeur du site.
-- Adresse `contact@frezzai.app` (dans les 3 pages) : remplace-la si ton domaine est différent.
+## Pages
+| Fichier | Contenu |
+|---|---|
+| `index.html` | Accueil : présentation, « 0 achat », FAQ (le texte de la FAQ est aussi dans les données structurées JSON-LD) |
+| `mentions-legales.html` | Éditeur, hébergeurs, représentant UE, médiateur, crédits |
+| `confidentialite.html` | Politique de confidentialité (site + app), construite à partir des traitements réels du code |
+| `cookies.html` | Liste des traceurs, gestion du consentement |
+| `conditions.html` | Conditions générales d’utilisation (adresse donnée à Google pour la page de connexion) |
+| `cgv.html` | Conditions générales de vente de Frezz Premium, formulaire de rétractation en annexe |
+| `robots.txt`, `sitemap.xml`, `llms.txt` | Robots, plan du site, description du site pour les assistants IA |
 
-## Publier (gratuit)
-1. Achète le domaine (ex. `frezzai.app`, environ 10 à 15 €/an chez Cloudflare, OVH ou Namecheap).
-2. Publie le dossier `site/` sur **Netlify** (glisser-déposer du dossier sur app.netlify.com/drop) ou **Vercel** (dossier racine `site`), puis branche le domaine.
+Les champs à remplir par l’éditeur sont surlignés en jaune : `<mark class="todo">[À COMPLÉTER …]</mark>`. Chercher
+`class="todo"` pour les retrouver tous.
 
-## Vérification Google (affiche « Frezz AI »)
-1. [Google Search Console](https://search.google.com/search-console) → ajoute le domaine → vérifie-le (enregistrement DNS TXT).
-2. Google Cloud → *Google Auth Platform* → **Branding** :
-   - Nom de l’application : `Frezz AI` ; logo : `logo.png` (120×120 minimum, carré)
-   - Page d’accueil : `https://frezzai.app`
-   - Règles de confidentialité : `https://frezzai.app/confidentialite.html`
-   - Conditions d’utilisation : `https://frezzai.app/conditions.html`
-   - Domaines autorisés : `frezzai.app` **et** `supabase.co`
-3. *Google Auth Platform* → **Vérification** → soumettre. Délai habituel : 2 à 3 jours ouvrés (les scopes `openid`, `email`, `profile` ne demandent pas d’audit de sécurité).
+## Traceurs et services tiers
+- **Vercel Web Analytics + Speed Insights** (`/_vercel/*`, même domaine) : statistiques anonymes, sans cookie, pas de
+  consentement nécessaire. À activer dans Vercel → Analytique et Informations sur la vitesse.
+- **Pixel Whop** : traceur publicitaire (cookies `_wuid`, empreinte du navigateur). Le code Whop est dans
+  `<script type="text/plain" data-consent="ads">` : il ne s’exécute qu’après « Tout accepter ».
+- **`consent.js`** : bandeau de choix (« Tout refuser » / « Tout accepter » au même niveau, « Personnaliser »), choix
+  gardé 6 mois dans `localStorage["frezz-consent"]`, lien « Gérer mes cookies » dans le pied de page, retrait = effacement
+  des cookies et du stockage Whop.
+- Polices (`fonts/`, licence SIL OFL) et animations GSAP 3.15 + Lenis 1.3 (`vendor/`) hébergées sur le site : aucun appel
+  à Google Fonts ni à un CDN. Si les animations ne se chargent pas ou si « réduire les animations » est activé, la page
+  s’affiche entière, sans animation.
 
-## Motion design
-GSAP 3.15 (ScrollTrigger, SplitText) + Lenis 1.3, chargés depuis cdn.jsdelivr.net (versions figées). Tout le code d'animation est dans `script.js`.
-- Si le CDN ne répond pas, ou si l'utilisateur a activé « réduire les animations », la page s'affiche entière, sans animation (garde-fou dans le `<head>` d'`index.html`).
-- Section « 0 achat » : épinglée au défilement sur ordinateur (plus de 900 px de large), animée sans épinglage sur téléphone.
-
-## Liste d’attente (« Être prévenu du lancement »)
-- Les inscriptions arrivent dans la table Supabase `public.waitlist` (e-mail, plateforme ios/android/both, date). Migration : `supabase/migrations/20260927170000_launch_waitlist.sql` du dépôt de l’app.
-- Le site n’écrit que via la fonction `join_waitlist` (clé publiable). Personne ne peut lire la liste depuis le navigateur.
-- Exporter la liste le jour du lancement : Supabase → Table Editor → `waitlist` → Export CSV. Ou en SQL : `select email, platform from public.waitlist where notified_at is null;`
-- Après l’envoi : `update public.waitlist set notified_at = now();` puis supprimer les lignes (promesse faite dans la politique de confidentialité).
+## Accessibilité
+Lien « Aller au contenu », focus clavier visible partout (anneau blanc + encre), un seul `h1` par page sans saut de
+niveau, maquettes de téléphone décrites par un texte unique (`role="img"`), langue `fr` déclarée.
